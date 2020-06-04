@@ -1,21 +1,37 @@
 <?php
 
 /**
+ * Summary: Main plugin file for the Mason WordPress: Mason Meta Information plugin
+ * Last modified: 2020-06-04
+ * Modified by: Jan Macario
+ */
+
+/**
  * Plugin Name:       Mason WordPress: Mason Meta Information
+ * Author:            Jan Macario
  * Plugin URI:        https://github.com/jmacario-gmu/gmuj-wordpress-plugin-mason-meta-information
  * Description:       Mason WordPress plugin which implements the addition of Mason-related website meta information into the website's HTML meta tags.
  * Version:           0.0.1
  */
+
 
 // Exit if this file is not called directly.
 	if (!defined('WPINC')) {
 		die;
 	}
 
-// Adds top-level administrative menu link to WordPress admin menu
+/**
+ * Summary: Adds top-level administrative menu link to WordPress admin menu
+ * Description: 
+ * Last modified: 2020-06-04
+ * Modified by: Jan Macario
+ */
+add_action('admin_menu', 'gmuj_mmi_add_toplevel_menu');
 function gmuj_mmi_add_toplevel_menu() {
 
+	// Add Wordpress admin menu item for this plugin's settings
 	/*
+	Code example:
 	add_menu_page(
 		string   $page_title, // title of page
 		string   $menu_title, // title of menu item
@@ -26,7 +42,6 @@ function gmuj_mmi_add_toplevel_menu() {
 		int      $position = null // position in menu sidebar - the lower the number the higher it will appear
 	)
 	*/
-
 	add_menu_page(
 		'Mason Meta Information',
 		'Mason Meta Information',
@@ -38,11 +53,17 @@ function gmuj_mmi_add_toplevel_menu() {
 	);
 
 }
-add_action('admin_menu', 'gmuj_mmi_add_toplevel_menu');
 
-// Deprecated: Adds sub-level administrative menu link to WordPress admin menu (will appear as a menu item under settings)
+/**
+ * Summary: Deprecated. Adds sub-level administrative menu link to Wordpress admin menu (will appear as a menu item under settings)
+ * Description: This is now handled by creating a top-level menu item
+ * Last modified: 2020-06-04
+ * Modified by: Jan Macario
+ */
+//add_action('admin_menu', 'gmuj_mmi_add_sublevel_menu');
 function gmuj_mmi_add_sublevel_menu() {
 	
+	// Add Wordpress admin menu item under settings for this plugin's settings
 	/*
 	add_submenu_page(
 		string   $parent_slug, // under which admin page should this sub-menu item appear
@@ -53,7 +74,6 @@ function gmuj_mmi_add_sublevel_menu() {
 		callable $function = '' // function that displays the plugin page
 	);
 	*/
-	
 	add_submenu_page(
 		'options-general.php',
 		'Mason Meta Information',
@@ -64,9 +84,13 @@ function gmuj_mmi_add_sublevel_menu() {
 	);
 	
 }
-//add_action('admin_menu', 'gmuj_mmi_add_sublevel_menu');
 
-// Generates the plugin settings page
+/**
+ * Summary: Generates the plugin settings page
+ * Description: 
+ * Last modified: 2020-06-04
+ * Modified by: Jan Macario
+ */
 function gmuj_mmi_display_settings_page() {
 	
 	// Only continue if this user has the 'manage options' capability
@@ -98,10 +122,18 @@ function gmuj_mmi_display_settings_page() {
 	
 }
 
-// Register plugin settings
+/**
+ * Summary: Register plugin settings
+ * Description: 
+ * Last modified: 2020-06-04
+ * Modified by: Jan Macario
+ */
+add_action('admin_init', 'gmuj_mmi_register_settings');
 function gmuj_mmi_register_settings() {
 	
 	/*
+	Code reference:
+
 	register_setting( 
 		string   $option_group, // name of option group - should match the parameter used in the settings_fields function in the display_settings_page function
 		string   $option_name, // name of the particular option
@@ -189,23 +221,37 @@ function gmuj_mmi_register_settings() {
 	);
 
 } 
-add_action('admin_init', 'gmuj_mmi_register_settings');
 
-// Generates markup for identity settings section
+/**
+ * Summary: Generates content for identity settings section
+ * Description: 
+ * Last modified: 2020-06-04
+ * Modified by: Jan Macario
+ */
 function gmuj_mmi_callback_section_settings_identity() {
 
 	echo '<p>Set the website identity meta tags.</p>';
 
 }
 
-// Generates markup for contacts settings section
+/**
+ * Summary: Generates content for contacts settings section
+ * Description: 
+ * Last modified: 2020-06-04
+ * Modified by: Jan Macario
+ */
 function gmuj_mmi_callback_section_settings_contacts() {
 
 	echo '<p>Set the website contacts meta tags.</p>';
 
 }
 
-// Generates text field for plugin settings option
+/**
+ * Summary: Generates text field for plugin settings option
+ * Description: 
+ * Last modified: 2020-06-04
+ * Modified by: Jan Macario
+ */
 function gmuj_mmi_callback_field_text($args) {
 	
 	//Get array of options. If the specified option does not exist, get default options from a function
@@ -225,7 +271,12 @@ function gmuj_mmi_callback_field_text($args) {
 	
 }
 
-// Sets default plugin options
+/**
+ * Summary: Sets default plugin options
+ * Description: 
+ * Last modified: 2020-06-04
+ * Modified by: Jan Macario
+ */
 function gmuj_mmi_options_default() {
 
 	return array(
@@ -237,7 +288,12 @@ function gmuj_mmi_options_default() {
 
 }
 
-// Validate plugin options
+/**
+ * Summary: Validate plugin options
+ * Description: 
+ * Last modified: 2020-06-04
+ * Modified by: Jan Macario
+ */
 function gmuj_mmi_callback_validate_options($input) {
 	
 	// Mason unit
@@ -263,7 +319,13 @@ function gmuj_mmi_callback_validate_options($input) {
 	
 }
 
-// Outputs meta tags to web page HTML head section
+/**
+ * Summary: Outputs meta tags to web page HTML head section
+ * Description: 
+ * Last modified: 2020-06-04
+ * Modified by: Jan Macario
+ */
+add_action('wp_head', 'gmuj_mmi_add_meta_tags', 99); // Giving it a priority of 99 means it is typically called last in the wp_head action, so these meta tags appear right before the closing head tag
 function gmuj_mmi_add_meta_tags() {
 
 	// Get plugin options
@@ -295,4 +357,3 @@ function gmuj_mmi_add_meta_tags() {
 		echo "<!-- End Mason Meta Information Plugin Output -->".PHP_EOL;
 
 }
-add_action('wp_head', 'gmuj_mmi_add_meta_tags', 99); // Giving it a priority of 90 means it is typically called last in the wp_head action, so these meta tags appear right before the closing head tag
