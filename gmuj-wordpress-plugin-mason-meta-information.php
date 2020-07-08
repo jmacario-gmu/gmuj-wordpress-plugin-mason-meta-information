@@ -19,7 +19,7 @@
 	}
 
 /**
- * Adds top-level administrative menu link to WordPress admin menu
+ * Adds link to plugin settings page to Wordpress admin menu as a top-level item
  */
 add_action('admin_menu', 'gmuj_mmi_add_toplevel_menu');
 function gmuj_mmi_add_toplevel_menu() {
@@ -50,10 +50,9 @@ function gmuj_mmi_add_toplevel_menu() {
 }
 
 /**
- * Deprecated. Adds sub-level administrative menu link to Wordpress admin menu (will appear as a menu item under settings)
- * This is now handled by creating a top-level menu item.
+ * Adds link to plugin settings page to Wordpress admin menu as a sub-menu item under settings
  */
-//add_action('admin_menu', 'gmuj_mmi_add_sublevel_menu');
+add_action('admin_menu', 'gmuj_mmi_add_sublevel_menu');
 function gmuj_mmi_add_sublevel_menu() {
 	
 	// Add Wordpress admin menu item under settings for this plugin's settings
@@ -64,7 +63,8 @@ function gmuj_mmi_add_sublevel_menu() {
 		string   $menu_title, // title of menu item
 		string   $capability, // capability needed for user to access this menu item
 		string   $menu_slug, // unique string used to identify the plugins settings page - use plugin name
-		callable $function = '' // function that displays the plugin page
+		callable $function = '', // function that displays the plugin page
+		int 	$position // the position in the menu order this item should appear
 	);
 	*/
 	add_submenu_page(
@@ -73,7 +73,8 @@ function gmuj_mmi_add_sublevel_menu() {
 		'Mason Meta Information',
 		'manage_options',
 		'gmuj_mmi',
-		'gmuj_mmi_display_settings_page'
+		'gmuj_mmi_display_settings_page',
+		0
 	);
 	
 }
