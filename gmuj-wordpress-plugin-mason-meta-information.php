@@ -93,6 +93,10 @@ function gmuj_mmi_display_settings_page() {
 	// Page title
 	echo "<h1>" . esc_html(get_admin_page_title()) . "</h1>";
 
+	// Output basic plugin info
+	echo "<p>This plugin allows you to provide Mason-specific organizational information which will be output as HTML meta tags on all public-facing pages of this website.</p>";
+	echo "<p>This provides a consistent (and machine-readable) method for easily identifying Mason websites and their appropriate contact people, including in an automated way for search engine indexing, etc.</p>";
+
 	// Begin form
 	echo "<form action='options.php' method='post'>";
 
@@ -225,6 +229,7 @@ function gmuj_mmi_callback_section_settings_identity() {
 function gmuj_mmi_callback_section_settings_contacts() {
 
 	echo '<p>Set the website contacts meta tags.</p>';
+	echo '<p><strong>Note: while these email addresses will not appear visibly on the website, they can be found in the HTML source code of public-facing pages of this website.</strong></p>';
 
 }
 
