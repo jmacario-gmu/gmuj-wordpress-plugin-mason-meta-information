@@ -1,9 +1,7 @@
 <?php
 
 /**
- * Summary: Main plugin file for the Mason WordPress: Mason Meta Information plugin
- * Last modified: 2020-06-04
- * Modified by: Jan Macario
+ * Main plugin file for the Mason WordPress: Mason Meta Information plugin
  */
 
 /**
@@ -21,10 +19,7 @@
 	}
 
 /**
- * Summary: Adds top-level administrative menu link to WordPress admin menu
- * Description: 
- * Last modified: 2020-06-04
- * Modified by: Jan Macario
+ * Adds top-level administrative menu link to WordPress admin menu
  */
 add_action('admin_menu', 'gmuj_mmi_add_toplevel_menu');
 function gmuj_mmi_add_toplevel_menu() {
@@ -55,10 +50,8 @@ function gmuj_mmi_add_toplevel_menu() {
 }
 
 /**
- * Summary: Deprecated. Adds sub-level administrative menu link to Wordpress admin menu (will appear as a menu item under settings)
- * Description: This is now handled by creating a top-level menu item
- * Last modified: 2020-06-04
- * Modified by: Jan Macario
+ * Deprecated. Adds sub-level administrative menu link to Wordpress admin menu (will appear as a menu item under settings)
+ * This is now handled by creating a top-level menu item.
  */
 //add_action('admin_menu', 'gmuj_mmi_add_sublevel_menu');
 function gmuj_mmi_add_sublevel_menu() {
@@ -86,10 +79,7 @@ function gmuj_mmi_add_sublevel_menu() {
 }
 
 /**
- * Summary: Generates the plugin settings page
- * Description: 
- * Last modified: 2020-06-04
- * Modified by: Jan Macario
+ * Generates the plugin settings page
  */
 function gmuj_mmi_display_settings_page() {
 	
@@ -123,10 +113,7 @@ function gmuj_mmi_display_settings_page() {
 }
 
 /**
- * Summary: Register plugin settings
- * Description: 
- * Last modified: 2020-06-04
- * Modified by: Jan Macario
+ * Register plugin settings
  */
 add_action('admin_init', 'gmuj_mmi_register_settings');
 function gmuj_mmi_register_settings() {
@@ -223,10 +210,7 @@ function gmuj_mmi_register_settings() {
 } 
 
 /**
- * Summary: Generates content for identity settings section
- * Description: 
- * Last modified: 2020-06-04
- * Modified by: Jan Macario
+ * Generates content for identity settings section
  */
 function gmuj_mmi_callback_section_settings_identity() {
 
@@ -235,10 +219,7 @@ function gmuj_mmi_callback_section_settings_identity() {
 }
 
 /**
- * Summary: Generates content for contacts settings section
- * Description: 
- * Last modified: 2020-06-04
- * Modified by: Jan Macario
+ * Generates content for contacts settings section
  */
 function gmuj_mmi_callback_section_settings_contacts() {
 
@@ -247,10 +228,7 @@ function gmuj_mmi_callback_section_settings_contacts() {
 }
 
 /**
- * Summary: Generates text field for plugin settings option
- * Description: 
- * Last modified: 2020-06-04
- * Modified by: Jan Macario
+ * Generates text field for plugin settings option
  */
 function gmuj_mmi_callback_field_text($args) {
 	
@@ -272,10 +250,7 @@ function gmuj_mmi_callback_field_text($args) {
 }
 
 /**
- * Summary: Sets default plugin options
- * Description: 
- * Last modified: 2020-06-04
- * Modified by: Jan Macario
+ * Sets default plugin options
  */
 function gmuj_mmi_options_default() {
 
@@ -289,10 +264,7 @@ function gmuj_mmi_options_default() {
 }
 
 /**
- * Summary: Validate plugin options
- * Description: 
- * Last modified: 2020-06-04
- * Modified by: Jan Macario
+ * Validate plugin options
  */
 function gmuj_mmi_callback_validate_options($input) {
 	
@@ -320,10 +292,7 @@ function gmuj_mmi_callback_validate_options($input) {
 }
 
 /**
- * Summary: Outputs meta tags to web page HTML head section
- * Description: 
- * Last modified: 2020-06-04
- * Modified by: Jan Macario
+ * Outputs meta tags to web page HTML head section
  */
 add_action('wp_head', 'gmuj_mmi_add_meta_tags', 99); // Giving it a priority of 99 means it is typically called last in the wp_head action, so these meta tags appear right before the closing head tag
 function gmuj_mmi_add_meta_tags() {
