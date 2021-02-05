@@ -18,6 +18,14 @@
 		die;
 	}
 
+// Set up auto-updates
+	require 'plugin-update-checker/plugin-update-checker.php';
+	$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://github.com/jmacario-gmu/gmuj-wordpress-plugin-mason-meta-information/',
+	__FILE__,
+	'gmuj-wordpress-plugin-mason-meta-information'
+	);
+
 /**
  * Adds link to plugin settings page to Wordpress admin menu as a top-level item
  */
