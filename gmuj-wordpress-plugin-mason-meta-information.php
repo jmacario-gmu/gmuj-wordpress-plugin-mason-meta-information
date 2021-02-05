@@ -9,7 +9,7 @@
  * Author:            Jan Macario
  * Plugin URI:        https://github.com/jmacario-gmu/gmuj-wordpress-plugin-mason-meta-information
  * Description:       Mason WordPress plugin which implements the addition of Mason-related website meta information into the website's HTML meta tags.
- * Version:           0.0.9
+ * Version:           1.0
  */
 
 
