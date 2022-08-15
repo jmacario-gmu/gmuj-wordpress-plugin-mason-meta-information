@@ -37,3 +37,5 @@
 		include('php/settings.php');
 	// Output
 		include('php/output.php');
+	// API
+		include('php/api.php');
