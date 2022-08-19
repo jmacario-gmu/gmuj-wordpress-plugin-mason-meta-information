@@ -3,7 +3,7 @@ Contributors: Jan Macario
 Requires at least: 4.7
 Tested up to: 6.1
 Requires PHP: 7.0
-Stable tag: 1.1
+Stable tag: 1.2
 
 Mason WordPress plugin which implements the addition of Mason-related website meta information as website HTML meta tags.
 
